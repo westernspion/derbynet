@@ -42,7 +42,7 @@ _**PATH_TO_YOUR_REPOSITORY**_ is the path to your local cloned repository.
 ### Linux/Ubuntu
 Use `docker-compose up -d` to bring up, then `docker-compose down` to bring down  
 
-YOU MUST SET 777 permissions on the db directory in this project to mount and save the database   
+YOU MUST SET 777 permissions on the `./lib` directory in this project to mount and save runtime data (images, videos, database, etc...)     
 
 YOU MUST ADJUST the database directory by picking `Advanced` and override to use this new directory `/var/db/<db_name>.sqlite`  
 
