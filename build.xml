@@ -29,7 +29,7 @@
 
   <!-- Duplicated in docs/build.xml -->
   <property name="soffice"
-	        location="/Applications/LibreOffice.app/Contents/MacOS/soffice"/>
+	        location="/usr/bin/soffice"/>
   <available property="soffice_available" file="${soffice}"/>
 
   <target name="clean" depends="docs-clean"

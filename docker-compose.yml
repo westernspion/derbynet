@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  derbynet_server:
+    image: jeffpiazza/derbynet_server
+    privileged: true
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./lib:/var/lib/derbynet:rw
+      - ./website:/var/www/html:ro
+      - ./db:/var/db

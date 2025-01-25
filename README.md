@@ -38,3 +38,33 @@ _**PATH_TO_YOUR_REPOSITORY**_ is the path to your local cloned repository.
      --mount type=bind,src=[** PATH TO YOUR REPOSITORY **]\website\,target=/var/www/html,readonly \
      jeffpiazza/derbynet_server   
    ```
+
+### Linux/Ubuntu
+Use `docker-compose up -d` to bring up, then `docker-compose down` to bring down  
+
+YOU MUST SET 777 permissions on the db directory in this project to mount and save the database   
+
+YOU MUST ADJUST the database directory by picking `Advanced` and override to use this new directory `/var/db/<db_name>.sqlite`  
+
+USE CHROME on device connecting to the timer for proper web serial api support  
+
+After connecting usb<->serial adapter, `dmesg | grep tty` to locate the tty device  
+```
+(base) bradley@bbox2:~/derbynet$ sudo dmesg | grep tty
+[sudo] password for bradley: 
+[    0.075615] printk: legacy console [tty0] enabled
+[    5.754226] usb 3-2: pl2303 converter now attached to ttyUSB0
+```
+
+Ensure that your user belongs to the same group owned owning the TTY device   
+Otherwise, web serial API will get failed to open serial port errors...   
+```
+(base) bradley@bbox2:~/derbynet$ ls -l /dev/ttyUSB0 
+crw-rw---- 1 root dialout 188, 0 Jan 25 12:32 /dev/ttyUSB0
+
+...so
+
+sudo usermod -a -G dialout bradley
+
+Then logout/login and verify that you can select the timer 
+```
